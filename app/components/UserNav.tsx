@@ -10,6 +10,8 @@ import {
     DropdownMenuItem
 } from "@/components/ui/dropdown-menu";
 import { CreditCard, DoorClosed, Home, Settings } from "lucide-react";
+import { LogoutLink } from "@kinde-oss/kinde-auth-nextjs/components";
+
 import Link from "next/link";
 
 export const navItems = [
@@ -18,13 +20,13 @@ export const navItems = [
     { name: 'Billing', href: '/dashboard/billing', icon: CreditCard },
 ]
 
-export function UserNav() {
+export function UserNav({name, email, image}: {name: string, email: string, image: string}) {
     return (
         <DropdownMenu>
             <DropdownMenuTrigger asChild>
                 <Button variant={"ghost"} className="relative h-10 w-10 rounded-full">
                     <Avatar className="h-10 w-10 rounded-full">
-                        <AvatarImage src="https://github.com/shadcn.png" alt="" />
+                        <AvatarImage src={image} alt="" />
                         <AvatarFallback>Edit</AvatarFallback>
                     </Avatar>
                 </Button>
@@ -32,8 +34,8 @@ export function UserNav() {
             <DropdownMenuContent className="w-65" align="end" forceMount>
                 <DropdownMenuLabel>
                     <div className="flex flex-col space-y-1">
-                        <p className="text-sm font-medium leading-none">Edit Balint</p>
-                        <p className="text-xs leading-none to-muted-foreground">edit@lenix.de</p>
+                        <p className="text-sm font-medium leading-none">{name}</p>
+                        <p className="text-xs leading-none to-muted-foreground">{email}</p>
                     </div>
                 </DropdownMenuLabel>
                 <DropdownMenuSeparator />
@@ -57,10 +59,10 @@ export function UserNav() {
                     className="w-full flex justify-between items-center cursor-pointer"
                     asChild
                 >
-                    <div>
+                    <LogoutLink>
                         Logout{" "}
                         <span><DoorClosed /></span>
-                    </div>
+                    </LogoutLink>
                 </DropdownMenuItem>
             </DropdownMenuContent>
         </DropdownMenu>
