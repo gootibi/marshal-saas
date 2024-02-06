@@ -5,8 +5,7 @@ export const stripe = new Stripe(process.env.STRIPE_SECRET_KEY as string, {
     typescript: true,
 });
 
-export const getStripeSession = async (
-    {
+export const getStripeSession = async ({
         priceId,
         domainUrl,
         customerId
