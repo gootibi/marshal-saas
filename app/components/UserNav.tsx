@@ -27,7 +27,7 @@ export function UserNav({name, email, image}: {name: string, email: string, imag
                 <Button variant={"ghost"} className="relative h-10 w-10 rounded-full">
                     <Avatar className="h-10 w-10 rounded-full">
                         <AvatarImage src={image} alt="" />
-                        <AvatarFallback>Edit</AvatarFallback>
+                        <AvatarFallback>{name}</AvatarFallback>
                     </Avatar>
                 </Button>
             </DropdownMenuTrigger>
@@ -44,7 +44,7 @@ export function UserNav({name, email, image}: {name: string, email: string, imag
                         <DropdownMenuItem asChild key={index}>
                             <Link
                                 href={item.href}
-                                className="w-full flex justify-between items-center cursor-pointer"
+                                className="w-full flex justify-between items-center cursor-pointer hover:scale-95 transition"
                             >
                                 {item.name}
                                 <span >
